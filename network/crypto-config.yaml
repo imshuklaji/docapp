@@ -1,0 +1,13 @@
+OrdererOrgs:
+  - Name: Orderer
+    Domain: doc-app.com
+    Specs:
+      - Hostname: orderer
+PeerOrgs:
+ - Name: allparticipants
+   Domain: allparticipants.doc-app.com
+   EnableNodeOUs: true
+   Template:
+      Count: 2
+   Users:
+      Count: 3
