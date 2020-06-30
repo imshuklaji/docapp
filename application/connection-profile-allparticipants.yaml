@@ -1,0 +1,86 @@
+---
+#
+# The network connection profile provides client applications the information about the target
+# blockchain network that are necessary for the applications to interact with it. These are all
+# knowledge that must be acquired from out-of-band sources. This file provides such a source.
+#
+name: "network_docnetwork"
+
+x-type: "hlfv1"
+
+description: "Document Registration Network"
+
+version: "1.0"
+
+client:
+  organization: allparticipants
+  connection:
+    timeout:
+      peer:
+        endorser: 300
+        eventHub: 300
+        eventReg: 300
+      orderer: 300
+
+channels:
+  docchannel:
+    orderers:
+      - orderer.doc-app.com
+    peers:
+      peer0.allparticipants.doc-app.com:
+        endorsingPeer: true
+        chaincodeQuery: true
+        ledgerQuery: true
+        eventSource: true
+      peer1.allparticipants.doc-app.com:
+        endorsingPeer: true
+        chaincodeQuery: true
+        ledgerQuery: true
+        eventSource: false
+
+
+organizations:
+allparticipants:
+    mspid: allparticipantsMSP
+    peers:
+      - peer0.allparticipants.doc-app.com
+      - peer1.allparticipants.doc-app.com
+    certificateAuthorities:
+      - ca.allparticipants.doc-app.com
+
+
+orderers:
+  orderer.doc-app.com:
+    url: grpc://localhost:7050
+    grpcOptions:
+      ssl-target-name-override: orderer.doc-app.com
+    tlsCACerts:
+      path: /home/upgrad/workspace/document-network/network/crypto-config/ordererOrganizations/doc-app.com/orderers/orderer.doc-app.com/msp/tlscacerts/tlsca.doc-app.com-cert.pem
+
+peers:
+  peer0.allparticipants.doc-app.com:
+    url: grpc://localhost:7051
+    grpcOptions:
+      ssl-target-name-override: peer0.allparticipants.doc-app.com
+      request-timeout: 120001
+    tlsCACerts:
+      path: /home/upgrad/workspace/document-network/network/crypto-config/peerOrganizations/allparticipants.doc-app.com/peers/peer0.allparticipants.doc-app.com/msp/tlscacerts/tlsca.allparticipants.doc-app.com-cert.pem
+  peer1.allparticipants.doc-app.com:
+    url: grpc://localhost:8051
+    grpcOptions:
+      ssl-target-name-override: peer1.allparticipants.doc-app.com
+      request-timeout: 120001
+    tlsCACerts:
+      path: /home/upgrad/workspace/document-network/network/crypto-config/peerOrganizations/allparticipants.doc-app.com/peers/peer1.allparticipants.doc-app.com/msp/tlscacerts/tlsca.allparticipants.doc-app.com-cert.pem
+
+certificateAuthorities:
+  ca.allparticipants.doc-app.com:
+    url: http://localhost:7054
+    httpOptions:
+      verify: false
+    tlsCACerts:
+      path: /home/upgrad/workspace/document-network/network/crypto-config/peerOrganizations/allparticipants.doc-app.com/ca/ca.allparticipants.doc-app.com-cert.pem
+    allparticipants:
+      - enrollId: admin
+        enrollSecret: adminpw
+    caName: ca.allparticipants.doc-app.com

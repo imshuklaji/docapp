@@ -6,7 +6,7 @@ class docnetContract extends Contract {
 	
 	constructor() {
 		// Provide a custom name to refer to this smart contract
-		super('org.document-network.docnetwork');
+		super('org.doc-app.docnetwork');
 	}
 	
 	/* ****** All custom functions are defined below ***** */
@@ -24,7 +24,9 @@ class docnetContract extends Contract {
 	 * @param metadata - Metadata associated with the doc
 	 * @returns
 	 */
-	async createDocEntry(ctx, hashId, metadata) {
+	async addDocHash(ctx, hashId, metadata) {
+		
+		console.info('============= START : Register Document ===========');
 		// Create a new composite key for the new document account
 		const docKey = ctx.stub.createCompositeKey('org.document-network.docnet.document', [hashId]);
 		
@@ -41,6 +43,7 @@ class docnetContract extends Contract {
 		let dataBuffer = Buffer.from(JSON.stringify(newDocObject));
 		await ctx.stub.putState(docKey, dataBuffer);
 		// Return value of new document entry created 
+		console.info('============= END : Register Document ===========');
 		return newDocObject;
 	}
 	
@@ -50,15 +53,15 @@ class docnetContract extends Contract {
 	 * @param hashId - Document Hash ID for which to fetch details
 	 * @returns
 	 */
-	async getStudent(ctx, hashId) {
+	async getDocData(ctx, hashId) {
 		// Create the composite key required to fetch record from blockchain
 		const docKey = ctx.stub.createCompositeKey('org.document-network.docnet.document', [hashId]);
 		
 		// Return value of document metadata from blockchain
-		let studentBuffer = await ctx.stub
+		let docBuffer = await ctx.stub
 				.getState(docKey)
 				.catch(err => console.log(err));
-		return JSON.parse(studentBuffer.toString());
+		return JSON.parse(docBuffer.toString());
 	}
 	
 	

@@ -11,7 +11,7 @@
     "lint": "eslint .",
     "pretest": "npm run lint",
     "test": "nyc mocha test --recursive",
-    "start-dev": "fabric-chaincode-node start --peer.address peer0.org1.document-network.com:7053 --chaincode-id-name docnetwork:1.1",
+    "start-dev": "fabric-chaincode-node start --peer.address peer0.allparticipants.doc-app.com:7053 --chaincode-id-name docnetwork:1.1",
     "start": "fabric-chaincode-node start",
     "mocha": "mocha test --recursive"
   },
