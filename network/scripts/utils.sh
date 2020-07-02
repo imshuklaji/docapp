@@ -35,8 +35,10 @@ setGlobals() {
     CORE_PEER_MSPCONFIGPATH=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/allparticipants.doc-app.com/users/Admin@allparticipants.doc-app.com/msp
     if [ "$PEER" -eq 0 ]; then
       CORE_PEER_ADDRESS=peer0.allparticipants.doc-app.com:7051
-    else
+    elif [ "$PEER" -eq 1 ]; then
       CORE_PEER_ADDRESS=peer1.allparticipants.doc-app.com:8051
+    else
+      CORE_PEER_ADDRESS=peer2.allparticipants.doc-app.com:9051
     fi
   else
     echo "================== ERROR !!! ORG Unknown =================="

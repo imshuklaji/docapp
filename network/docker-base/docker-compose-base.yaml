@@ -49,6 +49,7 @@ services:
         - peer0.allparticipants.doc-app.com:/var/hyperledger/production
     ports:
       - 7051:7051
+      - 7053:7053
 
   peer1.allparticipants.doc-app.com:
     container_name: peer1.allparticipants.doc-app.com
@@ -71,4 +72,29 @@ services:
         - peer1.allparticipants.doc-app.com:/var/hyperledger/production
 
     ports:
-      - 8051:7051
+      - 8051:8051
+      - 8053:8053
+
+  peer2.allparticipants.doc-app.com:
+    container_name: peer2.allparticipants.doc-app.com
+    extends:
+      file: docker-compose-peer.yaml
+      service: peer-base
+    environment:
+      - CORE_PEER_ID=peer2.allparticipants.doc-app.com
+      - CORE_PEER_ADDRESS=peer2.allparticipants.doc-app.com:9051
+      - CORE_PEER_LISTENADDRESS=0.0.0.0:9051
+      - CORE_PEER_CHAINCODEADDRESS=peer0.allparticipants.doc-app.com:9053
+      - CORE_PEER_CHAINCODELISTENADDRESS=0.0.0.0:9053
+      - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer2.allparticipants.doc-app.com:9051
+      - CORE_PEER_GOSSIP_BOOTSTRAP=peer0.allparticipants.doc-app.com:7051
+      - CORE_PEER_LOCALMSPID=allparticipantsMSP
+    volumes:
+        - /var/run/:/host/var/run/
+        - ../crypto-config/peerOrganizations/allparticipants.doc-app.com/peers/peer2.allparticipants.doc-app.com/msp:/etc/hyperledger/fabric/msp
+        - ../crypto-config/peerOrganizations/allparticipants.doc-app.com/peers/peer2.allparticipants.doc-app.com/tls:/etc/hyperledger/fabric/tls
+        - peer2.allparticipants.doc-app.com:/var/hyperledger/production
+
+    ports:
+      - 9051:9051
+      - 9053:9053

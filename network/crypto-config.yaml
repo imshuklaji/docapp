@@ -8,6 +8,6 @@ PeerOrgs:
    Domain: allparticipants.doc-app.com
    EnableNodeOUs: true
    Template:
-      Count: 2
+      Count: 3
    Users:
       Count: 3

@@ -35,12 +35,15 @@ echo "Channel name : "$CHANNEL_NAME
 # import utils
 . scripts/utils.sh
 
-## Install new version of chaincode on peer0 of all 3 orgs making them endorsers
+## Install new version of chaincode on all peers orgs making them endorsers
 echo "Installing chaincode on peer0.allparticipants.doc-app.com ..."
 installChaincode 0 'allparticipants' $VERSION
 
 echo "Installing chaincode on peer1.allparticipants.doc-app.com ..."
 installChaincode 1 'allparticipants' $VERSION
+
+echo "Installing chaincode on peer2.allparticipants.doc-app.com ..."
+installChaincode 2 'allparticipants' $VERSION
 
 # Instantiate chaincode on the channel using peer0.allparticipants
 echo "Instantiating chaincode on channel using peer0.allparticipants.doc-app.com ..."

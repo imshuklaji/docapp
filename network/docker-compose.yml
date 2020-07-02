@@ -4,6 +4,7 @@ volumes:
   orderer.doc-app.com:
   peer0.allparticipants.doc-app.com:
   peer1.allparticipants.doc-app.com:
+  peer2.allparticipants.doc-app.com:
 
 networks:
   docnetwork:
@@ -51,6 +52,14 @@ services:
     networks:
       - docnetwork
 
+  peer2.allparticipants.doc-app.com:
+    container_name: peer2.allparticipants.doc-app.com
+    extends:
+      file:  docker-base/docker-compose-base.yaml
+      service: peer2.allparticipants.doc-app.com
+    networks:
+      - docnetwork
+
   cli:
     container_name: cli
     image: hyperledger/fabric-tools:1.4.3
@@ -81,6 +90,7 @@ services:
       - orderer.doc-app.com
       - peer0.allparticipants.doc-app.com
       - peer1.allparticipants.doc-app.com
+      - peer2.allparticipants.doc-app.com
     networks:
       - docnetwork
 

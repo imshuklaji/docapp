@@ -39,7 +39,7 @@ echo "New Version : "$VERSION
 echo "Installing chaincode on peer0.allparticipants.doc-app.com ..."
 installChaincode 0 'allparticipants' $VERSION
 
-echo "Installing chaincode on peer1.allparticipants.doc-app.com ..."
+#echo "Installing chaincode on peer1.allparticipants.doc-app.com ..."
 # installChaincode 1 'allparticipants' $VERSION
 
 # Upgrade chaincode on the channel using peer0.allparticipants
