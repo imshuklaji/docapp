@@ -13,7 +13,7 @@ async function main(hashId, metadata) {
 	try {
 		const docnetContract = await helper.getContractInstance();
 
-		
+
 		console.log('.....Requesting to Add a  New Doc on the Network');
 		const newDocBuffer = await docnetContract.submitTransaction('addDocHash',hashId, metadata);
 
@@ -37,8 +37,8 @@ async function main(hashId, metadata) {
 	}
 }
 
-/*main(hashId, metadata).then(() => {
+main('11223344', 'metadata').then(() => {
 	console.log('New Doc Addition Transaction Submitted on the Network');
-});*/
+});
 
 module.exports.execute = main;

@@ -30,7 +30,7 @@ async function main(certificatePath, privateKeyPath) {
 		const privatekey = fs.readFileSync(privateKeyPath).toString();
 
 		// Load credentials into wallet
-		const identityLabel = 'AllPARTICIPANTS_ADMIN';
+		const identityLabel = 'ALLPARTICIPANTS_ADMIN';
 		const identity = X509WalletMixin.createIdentity('allparticipantsMSP', certificate, privatekey);
 
 		await wallet.import(identityLabel, identity);
@@ -42,8 +42,8 @@ async function main(certificatePath, privateKeyPath) {
 	}
 }
 
-/*main('/home/upgrad/workspace/document-network/network/crypto-config/peerOrganizations/allparticipants.doc-app.com/users/Admin@allparticipants.doc-app.com/msp/signcerts/Admin@allparticipants.doc-app.com-cert.pem', '/home/upgrad/workspace/doc-app/network/crypto-config/peerOrganizations/allparticipants.doc-app.com/users/Admin@allparticipants.doc-app.com/msp/keystore/1233ae1f3e980533b873867c2c00178826268f4535eb41a704003c7460371340_sk').then(() => {
+main('/home/upgrad/workspace/document-network/network/crypto-config/peerOrganizations/allparticipants.doc-app.com/users/Admin@allparticipants.doc-app.com/msp/signcerts/Admin@allparticipants.doc-app.com-cert.pem', '/home/upgrad/workspace/document-network/network/crypto-config/peerOrganizations/allparticipants.doc-app.com/users/Admin@allparticipants.doc-app.com/msp/keystore/13a49fa7dff8ac501d9e5ce7e490cfd48287b2994c361e27bbc8d829fa2ddc22_sk').then(() => {
   console.log('User identity added to wallet.');
-});*/
+});
 
 module.exports.execute = main;

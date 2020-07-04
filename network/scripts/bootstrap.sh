@@ -55,7 +55,7 @@ createChannel() {
 joinChannel() {
 
   for org in $ORGS; do
-    for peer in 0 1; do
+    for peer in 0 1 2; do
       joinChannelWithRetry $peer $org
       echo "===================== peer${peer}.${org}.doc-app.com  joined channel '$CHANNEL_NAME' ===================== "
       sleep $DELAY

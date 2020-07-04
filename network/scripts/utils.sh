@@ -116,7 +116,7 @@ instantiateChaincode() {
   # the "-o" option
   if [ -z "$CORE_PEER_TLS_ENABLED" -o "$CORE_PEER_TLS_ENABLED" = "false" ]; then
     set -x
-    peer chaincode instantiate -o orderer.doc-app.com:7050 -C "$CHANNEL_NAME" -n docnet -l "${LANGUAGE}" -v "${VERSION}" -c '{"Args":[]}' -P "OR ('allparticipantsMSP.member')" >&log.txt
+    peer chaincode instantiate -o orderer.doc-app.com:7050 -C "$CHANNEL_NAME" -n docnet -l "${LANGUAGE}" -v "${VERSION}" -c '{"Args":["org.doc-app.docnetwork:instantiate"]}' -P "OR ('allparticipantsMSP.member','allparticipantsMSP.admin')" >&log.txt
     res=$?
     set +x
   else

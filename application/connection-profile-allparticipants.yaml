@@ -37,7 +37,11 @@ channels:
         chaincodeQuery: true
         ledgerQuery: true
         eventSource: false
-
+      peer2.allparticipants.doc-app.com:
+        endorsingPeer: true
+        chaincodeQuery: true
+        ledgerQuery: true
+        eventSource: false
 
 organizations:
 allparticipants:
@@ -45,6 +49,7 @@ allparticipants:
     peers:
       - peer0.allparticipants.doc-app.com
       - peer1.allparticipants.doc-app.com
+      - peer2.allparticipants.doc-app.com
     certificateAuthorities:
       - ca.allparticipants.doc-app.com
 
@@ -72,6 +77,15 @@ peers:
       request-timeout: 120001
     tlsCACerts:
       path: /home/upgrad/workspace/document-network/network/crypto-config/peerOrganizations/allparticipants.doc-app.com/peers/peer1.allparticipants.doc-app.com/msp/tlscacerts/tlsca.allparticipants.doc-app.com-cert.pem
+
+  peer2.allparticipants.doc-app.com:
+    url: grpc://localhost:9051
+    grpcOptions:
+      ssl-target-name-override: peer2.allparticipants.doc-app.com
+      request-timeout: 120001
+    tlsCACerts:
+      path: /home/upgrad/workspace/document-network/network/crypto-config/peerOrganizations/allparticipants.doc-app.com/peers/peer2.allparticipants.doc-app.com/msp/tlscacerts/tlsca.allparticipants.doc-app.com-cert.pem
+
 
 certificateAuthorities:
   ca.allparticipants.doc-app.com:

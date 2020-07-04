@@ -14,7 +14,7 @@ async function main(hashId) {
 	try {
 		const docnetContract = await helper.getContractInstance();
 
-		
+
 		console.log('.....Requesting to get doc details from the Network');
 		const DocBuffer = await docnetContract.submitTransaction('getDocData', hashId);
 
@@ -38,8 +38,8 @@ async function main(hashId) {
 	}
 }
 
-/*main(hashId).then(() => {
+main('11223344').then(() => {
 	console.log('Get Doc  Request Submitted on the Network');
-});*/
+});
 
 module.exports.execute = main;
