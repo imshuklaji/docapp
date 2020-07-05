@@ -37,8 +37,8 @@ async function main(hashId, metadata) {
 	}
 }
 
-main('11223344', 'metadata').then(() => {
+/*main('11223344', 'metadata').then(() => {
 	console.log('New Doc Addition Transaction Submitted on the Network');
-});
+});*/
 
 module.exports.execute = main;

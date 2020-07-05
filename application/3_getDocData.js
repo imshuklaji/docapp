@@ -38,8 +38,8 @@ async function main(hashId) {
 	}
 }
 
-main('11223344').then(() => {
+/*main('11223344').then(() => {
 	console.log('Get Doc  Request Submitted on the Network');
-});
+});*/
 
 module.exports.execute = main;

@@ -34,12 +34,12 @@ channels:
         eventSource: true
       peer1.allparticipants.doc-app.com:
         endorsingPeer: true
-        chaincodeQuery: true
+        chaincodeQuery: false
         ledgerQuery: true
         eventSource: false
       peer2.allparticipants.doc-app.com:
         endorsingPeer: true
-        chaincodeQuery: true
+        chaincodeQuery: false
         ledgerQuery: true
         eventSource: false
 

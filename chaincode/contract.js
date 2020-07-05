@@ -28,7 +28,7 @@ class docnetContract extends Contract {
 
 		console.info('============= START : Register Document ===========');
 		// Create a new composite key for the new document account
-		const docKey = ctx.stub.createCompositeKey('org.document-network.docnet.document', [hashId]);
+		//const docKey = ctx.stub.createCompositeKey('org.doc-app.docnetwork.document', [hashId]);
 
 		// Create a document object to be stored in blockchain
 		let newDocObject = {
@@ -41,7 +41,9 @@ class docnetContract extends Contract {
 
 		// Convert the JSON object to a buffer and send it to blockchain for storage
 		let dataBuffer = Buffer.from(JSON.stringify(newDocObject));
-		await ctx.stub.putState(docKey, dataBuffer);
+		//await ctx.stub.putState(docKey, dataBuffer);
+
+		await ctx.stub.putState(hashId, dataBuffer);
 		// Return value of new document entry created
 		console.info('============= END : Register Document ===========');
 		return newDocObject;
@@ -55,16 +57,22 @@ class docnetContract extends Contract {
 	 */
 	async getDocData(ctx, hashId) {
 		// Create the composite key required to fetch record from blockchain
-		const docKey = ctx.stub.createCompositeKey('org.document-network.docnet.document', [hashId]);
+		//const docKey = ctx.stub.createCompositeKey('org.doc-app.docnetwork.document', [hashId]);
 
 		// Return value of document metadata from blockchain
-		let docBuffer = await ctx.stub
+		/*let docBuffer = await ctx.stub
 				.getState(docKey)
-				.catch(err => console.log(err));
-		return JSON.parse(docBuffer.toString());
-	}
+				.catch(err => console.log(err));*/
 
 
+		 let docBuffer = await ctx.stub.getState(hashId);
+		 //check if the docbuffer is empty or not
+	   if (!docBuffer || docBuffer.length === 0) {
+	            throw new Error('Invalid ${hashId} or Document not registered');
+	        }
+	   console.log('Recevied Document buffer ');
+		 return JSON.parse(docBuffer.toString());
+		}
 
 }
 

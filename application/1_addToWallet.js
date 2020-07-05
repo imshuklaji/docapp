@@ -42,8 +42,8 @@ async function main(certificatePath, privateKeyPath) {
 	}
 }
 
-main('/home/upgrad/workspace/document-network/network/crypto-config/peerOrganizations/allparticipants.doc-app.com/users/Admin@allparticipants.doc-app.com/msp/signcerts/Admin@allparticipants.doc-app.com-cert.pem', '/home/upgrad/workspace/document-network/network/crypto-config/peerOrganizations/allparticipants.doc-app.com/users/Admin@allparticipants.doc-app.com/msp/keystore/13a49fa7dff8ac501d9e5ce7e490cfd48287b2994c361e27bbc8d829fa2ddc22_sk').then(() => {
+/*main('/home/upgrad/workspace/document-network/network/crypto-config/peerOrganizations/allparticipants.doc-app.com/users/Admin@allparticipants.doc-app.com/msp/signcerts/Admin@allparticipants.doc-app.com-cert.pem', '/home/upgrad/workspace/document-network/network/crypto-config/peerOrganizations/allparticipants.doc-app.com/users/Admin@allparticipants.doc-app.com/msp/keystore/44bdfbe903b1b9c99f30e8ddace46dbce0c34d145df8279ce5e66dea3d2b67da_sk').then(() => {
   console.log('User identity added to wallet.');
-});
+});*/
 
 module.exports.execute = main;

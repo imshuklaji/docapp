@@ -96,7 +96,7 @@ installChaincode() {
   setGlobals "$PEER" "$ORG"
   VERSION=${3:-1.0}
   set -x
-  peer chaincode install -n docnet -v "${VERSION}" -l "${LANGUAGE}" -p "${CC_SRC_PATH}" >&log.txt
+  peer chaincode install -n docnetContract -v "${VERSION}" -l "${LANGUAGE}" -p "${CC_SRC_PATH}" >&log.txt
   res=$?
   set +x
   cat log.txt
@@ -116,12 +116,12 @@ instantiateChaincode() {
   # the "-o" option
   if [ -z "$CORE_PEER_TLS_ENABLED" -o "$CORE_PEER_TLS_ENABLED" = "false" ]; then
     set -x
-    peer chaincode instantiate -o orderer.doc-app.com:7050 -C "$CHANNEL_NAME" -n docnet -l "${LANGUAGE}" -v "${VERSION}" -c '{"Args":["org.doc-app.docnetwork:instantiate"]}' -P "OR ('allparticipantsMSP.member','allparticipantsMSP.admin')" >&log.txt
+    peer chaincode instantiate -o orderer.doc-app.com:7050 -C "$CHANNEL_NAME" -n docnetContract -l "${LANGUAGE}" -v "${VERSION}" -c '{"Args":["org.doc-app.docnetwork:instantiate"]}' -P "OR ('allparticipantsMSP.member','allparticipantsMSP.admin')" >&log.txt
     res=$?
     set +x
   else
     set -x
-    peer chaincode instantiate -o orderer.doc-app.com:7050 --tls "$CORE_PEER_TLS_ENABLED" --cafile $ORDERER_CA -C $CHANNEL_NAME -n docnet -l ${LANGUAGE} -v ${VERSION} -c '{"Args":[]}' -P "OR ('allparticipantsMSP.member')" >&log.txt
+    peer chaincode instantiate -o orderer.doc-app.com:7050 --tls "$CORE_PEER_TLS_ENABLED" --cafile $ORDERER_CA -C $CHANNEL_NAME -n docnetContract -l ${LANGUAGE} -v ${VERSION} -c '{"Args":[]}' -P "OR ('allparticipantsMSP.member')" >&log.txt
     res=$?
     set +x
   fi
@@ -139,12 +139,12 @@ upgradeChaincode() {
 
   if [ -z "$CORE_PEER_TLS_ENABLED" -o "$CORE_PEER_TLS_ENABLED" = "false" ]; then
     set -x
-    peer chaincode upgrade -o orderer.doc-app.com:7050 -C $CHANNEL_NAME -n docnet -l ${LANGUAGE} -v ${VERSION} -p ${CC_SRC_PATH} -c '{"Args":[]}' -P "OR ('allparticipantsMSP.member')" >&log.txt
+    peer chaincode upgrade -o orderer.doc-app.com:7050 -C $CHANNEL_NAME -n docnetContract -l ${LANGUAGE} -v ${VERSION} -p ${CC_SRC_PATH} -c '{"Args":[]}' -P "OR ('allparticipantsMSP.member')" >&log.txt
     res=$?
     set +x
   else
     set -x
-    peer chaincode upgrade -o orderer.doc-app.com:7050 --tls $CORE_PEER_TLS_ENABLED --cafile $ORDERER_CA -C $CHANNEL_NAME -n docnet -l ${LANGUAGE} -v ${VERSION} -p ${CC_SRC_PATH} -c '{"Args":[]}' -P "OR ('allparticipantsMSP.member')" >&log.txt
+    peer chaincode upgrade -o orderer.doc-app.com:7050 --tls $CORE_PEER_TLS_ENABLED --cafile $ORDERER_CA -C $CHANNEL_NAME -n docnetContract -l ${LANGUAGE} -v ${VERSION} -p ${CC_SRC_PATH} -c '{"Args":[]}' -P "OR ('allparticipantsMSP.member')" >&log.txt
     res=$?
     set +x
   fi
@@ -206,12 +206,12 @@ chaincodeInvoke() {
   # it using the "-o" option
   if [ -z "$CORE_PEER_TLS_ENABLED" -o "$CORE_PEER_TLS_ENABLED" = "false" ]; then
     set -x
-    peer chaincode invoke -o orderer.doc-app.com:7050 -C $CHANNEL_NAME -n docnet $PEER_CONN_PARMS -c '{"Args":["org.medic-network.docnet:createStudent","0001","Aakash Bansal","connect@aakashbansal.com","15"]}' >&log.txt
+    peer chaincode invoke -o orderer.doc-app.com:7050 -C $CHANNEL_NAME -n docnetContract $PEER_CONN_PARMS -c '{"Args":["org.medic-network.docnet:createStudent","0001","Aakash Bansal","connect@aakashbansal.com","15"]}' >&log.txt
     res=$?
     set +x
   else
     set -x
-    peer chaincode invoke -o orderer.doc-app.com:7050 --tls $CORE_PEER_TLS_ENABLED --cafile $ORDERER_CA -C $CHANNEL_NAME -n docnet $PEER_CONN_PARMS -c '{"Args":["org.medic-network.docnet:createStudent","0001","Aakash Bansal","connect@aakashbansal.com"]}' >&log.txt
+    peer chaincode invoke -o orderer.doc-app.com:7050 --tls $CORE_PEER_TLS_ENABLED --cafile $ORDERER_CA -C $CHANNEL_NAME -n docnetContract $PEER_CONN_PARMS -c '{"Args":["org.medic-network.docnet:createStudent","0001","Aakash Bansal","connect@aakashbansal.com"]}' >&log.txt
     res=$?
     set +x
   fi

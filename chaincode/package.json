@@ -1,5 +1,5 @@
 {
-  "name": "docnetwork",
+  "name": "docnetContract",
   "version": "0.0.1",
   "description": "Document Network",
   "main": "index.js",
@@ -11,7 +11,7 @@
     "lint": "eslint .",
     "pretest": "npm run lint",
     "test": "nyc mocha test --recursive",
-    "start-dev": "fabric-chaincode-node start --peer.address peer0.allparticipants.doc-app.com:7051 --chaincode-id-name docnetwork:1.1",
+    "start-dev": "fabric-chaincode-node start --peer.address peer0.allparticipants.doc-app.com:7051 --chaincode-id-name docnetContract:1.1",
     "start": "fabric-chaincode-node start",
     "mocha": "mocha test --recursive"
   },
