@@ -38,7 +38,7 @@ app.post('/addToWallet', (req, res) => {
 });
 
 app.post('/addDocHash', (req, res) => {
-    approveNewUser.execute(req.body.hashId, req.body.metadata).then (() => {
+    addDocHash.execute(req.body.hashId, req.body.metadata).then (() => {
         console.log('Add new doc request submitted on the Network');
         const result = {
             status: 'success',
@@ -58,7 +58,7 @@ app.post('/addDocHash', (req, res) => {
 
 
 app.post('/getDocData', (req, res) => {
-    approveNewUser.execute(req.body.hashId).then (() => {
+    getDocData.execute(req.body.hashId).then (() => {
         console.log('Get doc details request submitted on the Network');
         const result = {
             status: 'success',

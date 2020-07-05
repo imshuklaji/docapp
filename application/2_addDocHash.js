@@ -15,7 +15,7 @@ async function main(hashId, metadata) {
 
 
 		console.log('.....Requesting to Add a  New Doc on the Network');
-		const newDocBuffer = await docnetContract.submitTransaction('addDocHash',hashId, metadata);
+		const newDocBuffer = await docnetContract.submitTransaction('addDocHash',JSON.stringify(hashId), JSON.stringify(metadata));
 
 		// process response
 		console.log('.....Processing  New Doc Addition Transaction Response \n\n');
@@ -37,7 +37,7 @@ async function main(hashId, metadata) {
 	}
 }
 
-/*main('11223344', 'metadata').then(() => {
+/*main('112233', 'New metadata').then(() => {
 	console.log('New Doc Addition Transaction Submitted on the Network');
 });*/
 

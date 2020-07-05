@@ -16,7 +16,7 @@ async function main(hashId) {
 
 
 		console.log('.....Requesting to get doc details from the Network');
-		const DocBuffer = await docnetContract.submitTransaction('getDocData', hashId);
+		const DocBuffer = await docnetContract.submitTransaction('getDocData',JSON.stringify(hashId));
 
 		// process response
 		console.log('.....Processing  get doc details Transaction Response \n\n');
@@ -38,7 +38,7 @@ async function main(hashId) {
 	}
 }
 
-/*main('11223344').then(() => {
+/*main('112233').then(() => {
 	console.log('Get Doc  Request Submitted on the Network');
 });*/
 
